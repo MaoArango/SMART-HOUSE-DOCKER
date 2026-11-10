@@ -1,0 +1,8 @@
+{
+  "name": "smart-house-inmobiliaria",
+  "version": "10.0.0",
+  "private": true,
+  "description": "Plataforma web de SMART HOUSE INMOBILIARIA S.A.S.",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=22.5" }
+}

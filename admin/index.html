@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SMART HOUSE | Administración</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="loginView" class="login-view">
+  <div class="login-card">
+    <div class="brand-mark"><span>⌂</span><div><strong>SMART HOUSE</strong><small>INMOBILIARIA S.A.S.</small></div></div>
+    <p class="eyebrow">PANEL PRIVADO</p><h1>Administración</h1><p class="muted">Gestiona propiedades, estados y solicitudes de propietarios.</p>
+    <form id="loginForm"><label>Usuario<input id="username" required autocomplete="username"></label><label>Contraseña<input id="password" type="password" required autocomplete="current-password"></label><button class="primary" type="submit">INICIAR SESIÓN</button><p id="loginError" class="error"></p></form>
+    <p class="demo-note">V10: datos almacenados en SQLite en el servidor local. Las fotografías nuevas se guardan en la carpeta uploads/.</p>
+  </div>
+</div>
+
+<div id="appView" class="app hidden">
+  <aside class="sidebar">
+    <div class="side-brand"><span>⌂</span><div><strong>SMART HOUSE</strong><small>ADMIN</small></div></div>
+    <nav>
+      <button class="side-link active" data-section="dashboard">▦ Dashboard</button>
+      <button class="side-link" data-section="properties">⌂ Propiedades</button>
+      <button class="side-link" data-section="requests">✉ Solicitudes</button>
+      <button class="side-link" data-section="owners">♙ Propietarios</button>
+    </nav>
+    <button id="logout" class="logout">Cerrar sesión</button>
+  </aside>
+  <main class="main">
+    <header class="top"><div><p class="eyebrow">SMART HOUSE INMOBILIARIA S.A.S.</p><h1 id="pageTitle">Dashboard</h1></div><button id="newPropertyTop" class="primary">+ Nueva propiedad</button></header>
+
+    <section id="dashboard" class="section active">
+      <div class="stats">
+        <div class="stat"><span>Propiedades</span><strong id="statTotal">0</strong><small>Total registradas</small></div>
+        <div class="stat"><span>Disponibles</span><strong id="statAvailable">0</strong><small>En publicación</small></div>
+        <div class="stat"><span>Reservadas</span><strong id="statReserved">0</strong><small>En negociación</small></div>
+        <div class="stat"><span>Vendidas</span><strong id="statSold">0</strong><small>Ventana de 48 h</small></div>
+        <div class="stat"><span>Solicitudes</span><strong id="statRequests">0</strong><small>Pendientes de revisión</small></div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="panel"><div class="panel-head"><div><h2>Resumen</h2><p>Estado actual del inventario de SMART HOUSE.</p></div><button class="secondary" id="goProperties">Ver propiedades</button></div><div id="statusBars" class="status-bars"></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Acciones rápidas</h2><p>Accede a las tareas más utilizadas.</p></div></div><div class="quick-actions"><button class="quick" id="quickNew">＋<span>Nueva propiedad</span><small>Agregar inmueble</small></button><button class="quick" id="quickRequests">✉<span>Solicitudes</span><small>Revisar propietarios</small></button><button class="quick" id="quickOwners">♙<span>Propietarios</span><small>Consultar contactos</small></button></div></div>
+      </div>
+      <div class="panel"><div class="panel-head"><div><h2>Actividad reciente</h2><p>Últimos cambios realizados en el panel.</p></div></div><div id="recentActivity" class="activity-list"></div></div>
+    </section>
+
+    <section id="properties" class="section">
+      <div class="section-toolbar"><div><h2>Propiedades</h2><p>Administra inmuebles, fotografías y estados.</p></div></div>
+      <div class="property-filters"><input id="propertySearch" placeholder="Buscar por nombre, ciudad o tipo..."><select id="propertyStatusFilter"><option value="TODAS">Todos los estados</option><option value="DISPONIBLE">Disponibles</option><option value="RESERVADA">Reservadas</option><option value="VENDIDA">Vendidas</option><option value="ARCHIVADA">Archivadas</option></select></div>
+      <div id="propertyList" class="property-list"></div>
+    </section>
+
+    <section id="requests" class="section"><div class="section-toolbar"><div><h2>Solicitudes de propietarios</h2><p>Revisa el inmueble, acuerda la comisión y decide cuándo publicar.</p></div></div><div id="requestList" class="request-list"></div></section>
+    <section id="owners" class="section"><div class="panel"><div class="panel-head"><div><h2>Propietarios</h2><p>Contactos provenientes de las solicitudes recibidas.</p></div></div><div id="ownerList" class="owner-list"></div></div></section>
+  </main>
+</div>
+
+<div id="propertyModal" class="overlay hidden"><div class="modal wide-modal"><button class="close" data-close="propertyModal">×</button><p class="eyebrow">SMART HOUSE</p><h2 id="modalTitle">Nueva propiedad</h2>
+<form id="propertyForm">
+<input type="hidden" id="propertyId">
+<div class="form-grid">
+<label>Título *<input id="pTitle" required placeholder="Ej. Casa moderna en Buga"></label>
+<label>Tipo *<select id="pType" required><option value="Casa">Casa</option><option value="Apartamento">Apartamento</option><option value="Lote">Lote</option><option value="Local">Local</option><option value="Oficina">Oficina</option></select></label>
+<label>Precio *<input id="pPrice" required placeholder="$ 350.000.000"></label>
+<label>Ciudad *<input id="pCity" required placeholder="Buga, Valle del Cauca"></label>
+<label>Barrio / sector<input id="pNeighborhood" placeholder="Ej. Albergue"></label>
+<label>Área (m²)<input id="pArea" type="number" min="0"></label>
+<label>Habitaciones<input id="pRooms" type="number" min="0"></label>
+<label>Baños<input id="pBaths" type="number" min="0"></label>
+<label>Parqueaderos<input id="pParking" type="number" min="0"></label>
+<label>Estado<select id="pStatus"><option value="DISPONIBLE">Disponible</option><option value="RESERVADA">Reservada</option><option value="VENDIDA">Vendida</option></select></label>
+<label>Comisión acordada (%)<input id="pCommission" type="number" min="0" max="100" step="0.1" placeholder="Ej. 3"></label>
+<label class="wide">Descripción<textarea id="pDescription" rows="4" placeholder="Describe el inmueble..."></textarea></label>
+<label class="wide">Características<textarea id="pFeatures" rows="3" placeholder="Cocina integral · Patio · Garaje"></textarea></label>
+<label class="wide">Fotografías del inmueble<input id="pPhotos" type="file" accept="image/*" multiple><small class="field-help">Puedes seleccionar varias fotos. Se guardarán en este prototipo local.</small></label>
+</div>
+<div id="photoPreview" class="photo-preview"></div>
+<p id="currentPhoto" class="photo-info"></p>
+<div class="modal-actions"><button type="button" class="secondary" data-close="propertyModal">Cancelar</button><button class="primary" type="submit">Guardar propiedad</button></div>
+</form></div></div>
+
+
+<div id="requestModal" class="overlay hidden"><div class="modal request-modal"><button class="close" data-close="requestModal">×</button><p class="eyebrow">SOLICITUD DE PROPIETARIO</p><h2 id="requestModalTitle">Revisar solicitud</h2><div id="requestModalBody"></div>
+<div class="publication-box"><div><strong>✏️ Preparar publicación de SMART HOUSE</strong><p>Estos son los datos que verá el público. El nombre y los datos de contacto del propietario permanecen privados.</p></div><div class="form-grid">
+<label class="wide">Nombre público de la propiedad *<input id="requestPublicTitle" required placeholder="Ej. Casa moderna con piscina en Buga"></label>
+<label>Tipo de inmueble<select id="requestPublicType"><option value="Casa">Casa</option><option value="Apartamento">Apartamento</option><option value="Lote">Lote</option><option value="Local">Local</option><option value="Oficina">Oficina</option></select></label>
+<label>Precio de publicación *<input id="requestPublicPrice" placeholder="$ 350.000.000"></label>
+<label>Ciudad *<input id="requestPublicCity" placeholder="Buga, Valle del Cauca"></label>
+<label>Sector / barrio público<input id="requestPublicNeighborhood" placeholder="Ej. Albergue"></label>
+<label>Área (m²)<input id="requestPublicArea" type="number" min="0"></label>
+<label>Habitaciones<input id="requestPublicRooms" type="number" min="0"></label>
+<label>Baños<input id="requestPublicBaths" type="number" min="0"></label>
+<label>Parqueaderos<input id="requestPublicParking" type="number" min="0"></label>
+<label class="wide">Descripción pública<textarea id="requestPublicDescription" rows="4" placeholder="Redacta aquí la descripción que verá el cliente..."></textarea></label>
+<label class="wide">Características públicas<textarea id="requestPublicFeatures" rows="3" placeholder="Cocina integral · Patio · Garaje"></textarea></label>
+</div><div class="publication-photos-head"><strong>📸 Fotografías para publicar</strong><span id="requestPhotoCount"></span></div><div id="requestPhotoSelector" class="request-photo-selector"></div></div>
+<div class="agreement-box"><div><strong>🤝 Acuerdo comercial</strong><p>La propiedad solo podrá publicarse cuando el acuerdo esté aceptado.</p></div><div class="form-grid"><label>Comisión acordada (%)<input id="requestCommission" type="number" min="0" max="100" step="0.1" placeholder="Ej. 3"></label><label>Estado del acuerdo<select id="requestAgreement"><option value="PENDIENTE">Pendiente</option><option value="EN NEGOCIACIÓN">En negociación</option><option value="ACEPTADO">Aceptado</option><option value="RECHAZADO">Rechazado</option></select></label><label class="wide">Notas internas<textarea id="requestNotes" rows="3" placeholder="Condiciones, observaciones o acuerdos con el propietario..."></textarea></label></div></div><div class="modal-actions"><button type="button" class="secondary" data-close="requestModal">Cerrar</button><button id="requestSaveReview" class="secondary">Guardar revisión</button><button id="requestReject" class="danger-btn">Rechazar</button><button id="requestApprove" class="primary">Aprobar y publicar</button></div></div></div>
+
+<div id="confirmModal" class="overlay hidden"><div class="modal confirm-modal"><button class="close" data-close="confirmModal">×</button><p class="eyebrow">CONFIRMACIÓN</p><h2 id="confirmTitle">Confirmar acción</h2><p id="confirmText" class="muted"></p><div class="modal-actions"><button class="secondary" data-close="confirmModal">Cancelar</button><button id="confirmAction" class="primary">Confirmar</button></div></div></div>
+<script src="admin.js"></script>
+</body></html>

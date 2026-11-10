@@ -1,0 +1,22 @@
+SMART HOUSE INMOBILIARIA S.A.S. — V10
+
+V10 incorpora el flujo de solicitudes de propietarios con seguimiento del acuerdo comercial.
+
+1. Inicia el servidor con INICIAR_SMART_HOUSE.bat.
+2. Entra al panel desde el acceso administrativo de la web o directamente en /admin/index.html.
+3. Usuario: admin
+4. Contraseña: SmartHouse2026!
+
+NUEVO EN V10
+- Las solicitudes de “Vende tu propiedad” se guardan en SQLite.
+- Cada propietario se registra y se relaciona con sus solicitudes y propiedades.
+- En Solicitudes puedes revisar los datos y fotografías.
+- Puedes registrar el porcentaje de comisión acordado.
+- Puedes cambiar el estado del acuerdo: Pendiente, En negociación, Aceptado o Rechazado.
+- “Aprobar y publicar” exige una comisión válida y acuerdo ACEPTADO.
+- La solicitud permanece en el historial con estado APROBADA / PUBLICADA.
+- La propiedad creada guarda el propietario y el ID de la solicitud de origen.
+- Propietarios muestra solicitudes y propiedades asociadas.
+
+NOTA
+La autenticación y la base de datos están pensadas para este servidor local/prototipo. Antes de publicar en Internet se debe configurar HTTPS, gestión segura de credenciales, almacenamiento de imágenes y una base de datos/servidor de producción.

@@ -1,0 +1,21 @@
+SMART HOUSE INMOBILIARIA S.A.S. - V9
+
+Esta versión inicia un servidor local y utiliza SQLite como base de datos.
+
+REQUISITO:
+- Node.js 22.5 o superior (se recomienda Node.js 24 LTS).
+
+COMO INICIAR EN WINDOWS:
+1. Descomprima toda la carpeta.
+2. Ejecute INICIAR_SMART_HOUSE.bat.
+3. Se abrirá http://localhost:3000/.
+4. El acceso administrativo está al final de la página pública.
+5. Usuario: admin
+6. Contraseña: SmartHouse2026!
+
+IMPORTANTE:
+- NO abra index.html con doble clic para usar esta V9. Debe ejecutarse el servidor.
+- La base de datos se crea automáticamente en data/smarthouse.db.
+- Las fotografías nuevas se guardan en uploads/.
+- Los archivos data/ y uploads/ contienen datos del negocio; haga copias de seguridad antes de publicar el sistema.
+- Esta es una versión de desarrollo local. Antes de producción debemos cambiar la autenticación, usar HTTPS, configurar copias de seguridad y desplegar el servidor en un hosting seguro.

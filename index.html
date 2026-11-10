@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART HOUSE Inmobiliaria S.A.S.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/normalize.css">
+<style>
+:root{--green:#123f36;--gold:#c99a2e;--white:#fff;--text:#1d2d29;--soft:#f6f7f5;--serif:'Arima',serif;--sans:'Mulish',sans-serif}
+*{box-sizing:border-box}html{font-size:62.5%;scroll-behavior:smooth}body{margin:0;font-size:1.6rem;font-family:var(--sans);color:var(--text);overflow-x:hidden}.container{width:min(1400px,92%);margin:auto}
+.topbar{height:48px;background:var(--green);color:#fff;display:flex;align-items:center;font-size:1.35rem}.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:2rem}.top-left{font-weight:600}.top-center{letter-spacing:.42rem;font-weight:700}.top-right{display:flex;gap:2rem;align-items:center}
+.navbar{height:140px;background:#fff;display:flex;align-items:center;box-shadow:0 2px 14px rgba(0,0,0,.08);position:relative;z-index:10}.navbar .container{display:flex;align-items:center;justify-content:space-between;gap:3rem}.brand{display:flex;align-items:center;text-decoration:none;flex-shrink:0}.brand svg{width:500px;max-width:46vw;height:auto;display:block}.navlinks{display:flex;align-items:center;gap:3.2rem}.navlinks a{color:var(--text);text-decoration:none;font-size:1.65rem;font-weight:600;padding:1rem 0}.navlinks a:hover,.navlinks a.active{color:var(--gold)}.publish{background:var(--gold);color:#fff!important;padding:1.5rem 2.6rem!important;border-radius:13px;box-shadow:0 6px 15px rgba(201,154,46,.22)}.hamb{display:none;border:0;background:none;font-size:3rem;color:var(--green)}
+.hero{min-height:650px;background-image:linear-gradient(90deg,rgba(8,25,22,.78) 0%,rgba(8,25,22,.56) 40%,rgba(8,25,22,.05) 72%),url('assets/imagenes/casa3.1.jpg');background-size:cover;background-position:center;position:relative;color:#fff}.hero-inner{min-height:650px;display:flex;align-items:center}.hero-copy{max-width:700px;padding:7rem 0 10rem}.eyebrow{letter-spacing:.48rem;font-size:1.45rem;font-weight:700;margin:0 0 2rem}.hero h1{font-size:6.4rem;line-height:1.02;margin:0;font-weight:800;letter-spacing:-.12rem}.hero h1 span{color:#e2b84b}.gold-line{width:70px;height:5px;background:var(--gold);margin:2.5rem 0}.hero p{font-size:2rem;line-height:1.5;margin:0 0 2.8rem}.actions{display:flex;gap:1.5rem;margin-bottom:4rem}.btn{border-radius:12px;padding:1.6rem 2.8rem;text-decoration:none;font-weight:800;font-size:1.65rem}.btn-gold{background:var(--gold);color:#fff}.btn-outline{border:1px solid #fff;color:#fff}.benefits{display:flex;gap:0;max-width:720px}.benefit{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.5);padding:0 1.4rem}.benefit:last-child{border:0}.benefit strong{display:block;font-size:1.65rem}.benefit small{font-size:1.25rem;opacity:.9}.searchbox{position:absolute;bottom:-45px;left:50%;transform:translateX(-50%);width:min(1320px,90%);background:#fff;border-radius:20px;padding:2rem;box-shadow:0 15px 40px rgba(0,0,0,.16);display:grid;grid-template-columns:1.1fr 1.1fr 1fr 1fr auto;gap:1rem;color:var(--text)}.field{padding:1rem 1.5rem;border-right:1px solid #e2e5e3}.field label{display:block;font-weight:800;font-size:1.45rem;margin-bottom:.5rem}.field span{color:#737b78;font-size:1.45rem}.search-btn{border:0;background:var(--green);color:#fff;border-radius:13px;padding:0 2.8rem;font:800 1.6rem var(--sans)}
+.content{padding:12rem 0 7rem;background:#fff}.section-title{text-align:center;font-size:4.2rem;margin:0 0 1rem;font-family:var(--serif)}.section-sub{text-align:center;color:#69736f;margin:0 0 3rem}.filters{text-align:center;margin-bottom:3rem}.filter{border:1px solid #ddd;background:#fff;padding:1rem 2rem;margin:.4rem;border-radius:30px;font-weight:700;cursor:pointer}.filter.active,.filter:hover{background:var(--gold);color:#fff;border-color:var(--gold)}.property-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.property{border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.1)}.property img{width:100%;height:240px;object-fit:cover;display:block}.property-body{padding:2rem}.property h3{margin:0 0 .8rem;font-size:2.2rem}.property p{margin:.5rem 0;color:#69736f}.price{font-weight:800;color:var(--green);font-size:2rem!important}.details{display:flex;gap:1.4rem;flex-wrap:wrap;font-size:1.3rem;margin-top:1.2rem}
+.footer{background:var(--green);color:#fff;text-align:center;padding:3rem}.footer p{margin:0}
+@media(max-width:1100px){.brand svg{width:390px}.navlinks{gap:1.6rem}.publish{padding:1.3rem 1.7rem!important}.hero h1{font-size:5.2rem}.searchbox{grid-template-columns:repeat(2,1fr)}.search-btn{min-height:55px}.field{border-right:0;border-bottom:1px solid #eee}}
+@media(max-width:800px){.top-center{display:none}.topbar .container{justify-content:center}.navbar{height:92px}.brand svg{width:310px;max-width:75vw}.navlinks{display:none}.navlinks.mobile-open{display:flex;position:absolute;top:92px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:1.5rem 6%;box-shadow:0 12px 20px rgba(0,0,0,.12)}.navlinks.mobile-open a{padding:1.2rem}.hamb{display:block}.hero,.hero-inner{min-height:700px}.hero-copy{padding:5rem 0 9rem}.hero h1{font-size:4.1rem}.benefits{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.benefit{border:0}.searchbox{bottom:-130px}.content{padding-top:17rem}.property-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.topbar{font-size:1.15rem}.hero{background-position:62% center}.hero h1{font-size:3.4rem}.hero p{font-size:1.7rem}.actions{flex-direction:column}.btn{text-align:center}.searchbox{grid-template-columns:1fr;width:92%;bottom:-270px}.content{padding-top:30rem}.brand svg{width:285px}}
+
+.section-heading-row{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:1.5rem}.section-kicker{margin:0 0 .7rem;color:var(--gold);font-size:1.25rem;font-weight:800;letter-spacing:.28rem}.section-sub.left{text-align:left;margin-bottom:0}.carousel-controls{display:flex;gap:.8rem}.carousel-btn{width:48px;height:48px;border-radius:50%;border:1px solid #d9dfdc;background:#fff;color:var(--green);font-size:3rem;line-height:1;cursor:pointer;transition:.2s}.carousel-btn:hover{background:var(--green);color:#fff}.property-carousel{overflow:hidden;padding:1rem .5rem 2rem;margin:0 -0.5rem}.property-track{display:flex;gap:2rem;transition:transform .45s ease;will-change:transform}.property{flex:0 0 calc((100% - 4rem)/3);min-width:0}.property-image-wrap{position:relative;overflow:hidden}.property-image-wrap img{height:260px;transition:transform .35s ease}.property:hover .property-image-wrap img{transform:scale(1.035)}.status{position:absolute;left:1.5rem;top:1.5rem;padding:.65rem 1.1rem;border-radius:20px;font-size:1.15rem;font-weight:800;backdrop-filter:blur(6px)}.status.available{background:rgba(225,246,237,.95);color:#17643e}.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:2.6rem;line-height:1;cursor:pointer;opacity:0;transition:.2s}.gallery-arrow.left{left:1rem}.gallery-arrow.right{right:1rem}.property:hover .gallery-arrow{opacity:1}.gallery-dots{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem}.gallery-dots i{width:7px;height:7px;background:rgba(255,255,255,.65);border-radius:50%}.gallery-dots i.active{background:#fff;width:18px;border-radius:8px}.property-top{display:flex;justify-content:space-between;align-items:center}.type-label{font-size:1.1rem;letter-spacing:.16rem;font-weight:800;color:var(--gold)}.heart{font-size:2.6rem;color:var(--green);cursor:pointer}.property-body p:not(.price){min-height:4.8rem}.view-property{margin-top:1.8rem;width:100%;padding:1.25rem;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:10px;font-weight:800;cursor:pointer}.view-property:hover{background:var(--green);color:#fff}.carousel-scroll-hint{text-align:center;color:#7a8480;font-size:1.25rem;margin-top:.5rem}.carousel-scroll-hint span{color:var(--gold);font-size:1.7rem}.property.is-hidden{display:none}
+@media(max-width:1100px){.property{flex-basis:calc((100% - 2rem)/2)}}
+@media(max-width:800px){.section-heading-row{align-items:center}.section-sub.left{font-size:1.4rem}.property{flex-basis:85vw}.carousel-controls{display:none}.property-carousel{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.property-carousel::-webkit-scrollbar{display:none}.property{scroll-snap-align:start}.property-track{gap:1.5rem}.carousel-scroll-hint{display:block}}
+
+/* ===== Galería modal SMART HOUSE ===== */
+.gallery-open{cursor:zoom-in}
+.modal-gallery{position:fixed;inset:0;background:rgba(5,18,15,.88);z-index:9999;display:none;align-items:center;justify-content:center;padding:3rem}.modal-gallery.open{display:flex}.modal-panel{position:relative;width:min(1180px,96vw);height:min(88vh,820px);background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.4);display:grid;grid-template-rows:auto 1fr auto}.modal-head{padding:1.6rem 2.2rem;border-bottom:1px solid #e6e9e7;display:flex;justify-content:space-between;align-items:center;gap:2rem}.modal-head h3{margin:0;font-size:2.2rem;color:var(--green)}.modal-head p{margin:.3rem 0 0;color:#68736f;font-size:1.3rem}.modal-close{border:0;background:#f2f4f2;color:var(--green);width:44px;height:44px;border-radius:50%;font-size:2.5rem;cursor:pointer}.modal-main{position:relative;background:#101513;display:flex;align-items:center;justify-content:center;min-height:0}.modal-main img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.modal-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--green);font-size:3.4rem;line-height:1;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.25)}.modal-nav.left{left:2rem}.modal-nav.right{right:2rem}.modal-counter{position:absolute;right:2rem;bottom:1.5rem;background:rgba(0,0,0,.6);color:#fff;padding:.6rem 1rem;border-radius:20px;font-size:1.2rem}.modal-thumbs{display:flex;gap:.8rem;padding:1.2rem 1.6rem;overflow-x:auto;background:#fff}.modal-thumbs button{flex:0 0 82px;height:62px;border:2px solid transparent;border-radius:8px;overflow:hidden;padding:0;background:#eee;cursor:pointer}.modal-thumbs button.active{border-color:var(--gold)}.modal-thumbs img{width:100%;height:100%;object-fit:cover}.modal-caption{position:absolute;left:2rem;bottom:1.5rem;background:rgba(0,0,0,.6);color:#fff;padding:.6rem 1rem;border-radius:20px;font-size:1.2rem}.modal-gallery.open .modal-panel{animation:modalIn .2s ease-out}@keyframes modalIn{from{transform:scale(.97);opacity:.5}to{transform:scale(1);opacity:1}}
+@media(max-width:700px){.modal-gallery{padding:0}.modal-panel{width:100vw;height:100vh;border-radius:0}.modal-head{padding:1.2rem 1.4rem}.modal-head h3{font-size:1.8rem}.modal-nav{width:44px;height:44px;font-size:2.8rem}.modal-nav.left{left:1rem}.modal-nav.right{right:1rem}.modal-caption{left:1rem;bottom:1rem}.modal-counter{right:1rem;bottom:1rem}.modal-main{min-height:0}.modal-thumbs button{flex-basis:70px;height:54px}}
+
+/* ===== Ficha de propiedad SMART HOUSE ===== */
+.property-modal{position:fixed;inset:0;background:rgba(5,18,15,.82);z-index:10000;display:none;align-items:center;justify-content:center;padding:2.5rem}.property-modal.open{display:flex}.property-modal-panel{width:min(1050px,95vw);max-height:92vh;overflow:auto;background:#fff;border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.45);position:relative}.property-modal-close{position:absolute;right:1.5rem;top:1.5rem;z-index:2;border:0;background:rgba(255,255,255,.95);color:var(--green);width:46px;height:46px;border-radius:50%;font-size:2.7rem;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,.15)}.property-modal-photo{height:420px;position:relative;overflow:hidden;background:#101513}.property-modal-photo img{width:100%;height:100%;object-fit:cover}.property-modal-status{position:absolute;left:2rem;top:2rem;background:#e1f6ed;color:#17643e;padding:.7rem 1.2rem;border-radius:20px;font-weight:800}.property-modal-content{padding:2.8rem 3.2rem 3.2rem}.property-modal-kicker{color:var(--gold);font-weight:800;letter-spacing:.18rem;font-size:1.2rem;margin:0 0 .6rem}.property-modal-content h2{font-size:3.4rem;color:var(--green);margin:.2rem 0 .6rem}.property-modal-location{color:#69736f;margin:0 0 2rem}.property-modal-price{font-size:2.8rem;font-weight:800;color:var(--green);margin:0 0 2rem}.property-modal-details{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.5rem}.property-modal-detail{background:var(--soft);border-radius:12px;padding:1.3rem;text-align:center}.property-modal-detail strong{display:block;font-size:1.5rem;color:var(--green)}.property-modal-detail span{font-size:1.2rem;color:#69736f}.property-modal-content h4{font-size:1.8rem;color:var(--green);margin:2rem 0 .7rem}.property-modal-description{color:#69736f;line-height:1.7}..property-modal-actions{display:flex;gap:1rem;margin-top:2.5rem}.property-modal-actions a{flex:1;text-align:center;text-decoration:none;border-radius:11px;padding:1.4rem;font-weight:800}.property-modal-primary{background:var(--gold);color:#fff}.property-modal-secondary{border:1px solid var(--green);color:var(--green)}
+@media(max-width:700px){.property-modal{padding:0}.property-modal-panel{width:100vw;max-height:100vh;border-radius:0}.property-modal-photo{height:300px}.property-modal-content{padding:2.2rem 1.7rem 2.5rem}.property-modal-content h2{font-size:2.7rem}.property-modal-details{grid-template-columns:repeat(2,1fr)}.property-modal-actions{flex-direction:column}.property-modal-close{right:1rem;top:1rem}}
+
+/* ===== Formulario Vende tu propiedad ===== */
+.sell-modal{position:fixed;inset:0;background:rgba(5,18,15,.82);z-index:10000;display:none;align-items:center;justify-content:center;padding:2rem}.sell-modal.open{display:flex}.sell-panel{width:min(1050px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.4);padding:0}.sell-head{padding:2.2rem 2.6rem;border-bottom:1px solid #e6e9e7;display:flex;justify-content:space-between;gap:2rem;align-items:flex-start}.sell-kicker{color:var(--gold);font-size:1.15rem;font-weight:800;letter-spacing:.2rem;margin:0 0 .5rem}.sell-head h2{margin:0;color:var(--green);font-size:3rem}.sell-head p:last-child{margin:.6rem 0 0;color:#69736f}.sell-close{border:0;background:#f2f4f2;color:var(--green);width:44px;height:44px;border-radius:50%;font-size:2.6rem;cursor:pointer;flex:0 0 auto}.form-section{padding:2rem 2.6rem;border-bottom:1px solid #edf0ee}.form-section h3{margin:0 0 1.4rem;color:var(--green);font-size:1.8rem}.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}.form-grid label,.full-label{display:flex;flex-direction:column;gap:.55rem;font-weight:700;font-size:1.3rem;color:#3c4b46}.form-grid input,.form-grid select,.full-label textarea{font:500 1.45rem var(--sans);border:1px solid #d9dfdc;border-radius:10px;padding:1.15rem;background:#fff;color:var(--text);outline:none}.form-grid input:focus,.form-grid select:focus,.full-label textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,154,46,.12)}.full-label{margin-top:1.2rem}.full-label textarea{resize:vertical}.upload-box{min-height:125px;border:2px dashed #ccd6d1;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;cursor:pointer;background:#fafcfb}.upload-box:hover{border-color:var(--gold);background:#fffdf7}.upload-box input{display:none}.upload-box span{font-size:1.6rem;color:var(--green)}.upload-box small{display:block;max-width:700px;color:#78837f;margin-top:.6rem;font-size:1.2rem}.photo-names{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.photo-names span{background:#eef3f0;border-radius:20px;padding:.5rem .9rem;font-size:1.15rem}.sell-note{margin:2rem 2.6rem 0;padding:1.2rem 1.4rem;background:#f5f8f6;border-left:4px solid var(--gold);border-radius:8px;color:#52605b;font-size:1.3rem;line-height:1.5}.sell-actions{display:flex;justify-content:flex-end;gap:1rem;padding:2rem 2.6rem}.btn-outline-dark{border:1px solid #aab4b0;background:#fff;color:var(--green)}.form-success{margin:0 2.6rem 2rem;padding:1rem 1.2rem;border-radius:8px;background:#eaf7ef;color:#17643e;font-weight:700;display:none}.form-success.show{display:block}@media(max-width:800px){.sell-modal{padding:0}.sell-panel{width:100vw;max-height:100vh;border-radius:0}.sell-head{padding:1.5rem}.sell-head h2{font-size:2.3rem}.form-section{padding:1.5rem}.form-grid{grid-template-columns:1fr}.sell-note{margin:1.5rem}.sell-actions{padding:1.5rem;flex-direction:column}.sell-actions .btn{width:100%}}
+
+/* ===== Estado VENDIDA destacado ===== */
+.property-image-wrap .status.reserved {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  background: #d88900;
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  padding: 1rem 2.4rem;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 900;
+  box-shadow: 0 8px 25px rgba(0,0,0,.35);
+  z-index: 5;
+  backdrop-filter: none;
+  pointer-events: none;
+}
+
+.property-image-wrap .status.sold {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  background: #d40000;
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  padding: 1rem 2.4rem;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 900;
+  box-shadow: 0 8px 25px rgba(0,0,0,.35);
+  z-index: 5;
+  backdrop-filter: none;
+  pointer-events: none;
+}
+.property-image-wrap:has(.status.sold) img {
+  filter: saturate(.65) brightness(.78);
+}
+@media (max-width: 600px) {
+  .property-image-wrap .status.reserved {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  background: #d88900;
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  padding: 1rem 2.4rem;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 900;
+  box-shadow: 0 8px 25px rgba(0,0,0,.35);
+  z-index: 5;
+  backdrop-filter: none;
+  pointer-events: none;
+}
+
+.property-image-wrap .status.sold {
+    font-size: 2rem;
+    padding: .8rem 1.6rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar"><div class="container"><div class="top-left">📍 Buga, Valle del Cauca | Colombia</div><div class="top-center">TU HOGAR, NUESTRA PRIORIDAD</div><div class="top-right">☎ +57 316 123 4567 &nbsp; | &nbsp; ✉ info@smarthouse.com</div></div></div>
+  <nav class="navbar"><div class="container">
+    <a class="brand" href="#inicio" aria-label="SMART HOUSE Inmobiliaria S.A.S.">
+      <svg viewBox="0 0 900 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SMART HOUSE INMOBILIARIA S.A.S.">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b78316"/><stop offset="1" stop-color="#e2b84b"/></linearGradient></defs>
+        <g transform="translate(8 8)"><path d="M15 88 91 17l76 71v77H15Z" fill="#173d35"/><path d="M91 17v71h76" fill="none" stroke="url(#g)" stroke-width="10"/><path d="M91 17 53 52v45h38Z" fill="url(#g)"/><path d="m91 17 38 35v45H91Z" fill="#f1d079"/><rect x="77" y="113" width="28" height="52" rx="2" fill="#fff"/><rect x="42" y="94" width="23" height="23" fill="#fff"/><rect x="117" y="94" width="23" height="23" fill="#fff"/></g>
+        <text x="205" y="78" font-family="Arial,Helvetica,sans-serif" font-size="62" font-weight="800" fill="#173d35">SMART <tspan fill="url(#g)">HOUSE</tspan></text>
+        <text x="208" y="121" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="600" letter-spacing="9" fill="#173d35">INMOBILIARIA S.A.S.</text>
+        <text x="210" y="154" font-family="Arial,Helvetica,sans-serif" font-size="17" letter-spacing="5" fill="#777">HOGARES QUE CONECTAN TU FUTURO</text>
+      </svg>
+    </a>
+    <div class="navlinks"><a class="active" href="#inicio">Inicio</a><a href="#propiedades">Propiedades</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a class="publish" href="#" id="sellPropertyBtn">🏠 Vende tu propiedad</a></div>
+    <button class="hamb" aria-label="Abrir menú">☰</button>
+  </div></nav>
+</header>
+<section class="hero" id="inicio"><div class="container hero-inner"><div class="hero-copy"><p class="eyebrow">ENCUENTRA MÁS QUE UNA PROPIEDAD</p><h1>Encuentra el lugar<br>donde <span>tus sueños</span><br>comienzan</h1><div class="gold-line"></div><p>Casas, apartamentos, lotes y más.<br>Todo en un solo lugar, 100% online.</p><div class="actions"><a class="btn btn-gold" href="#propiedades">⌕ &nbsp; Ver propiedades</a><a class="btn btn-outline" href="#nosotros">▶ &nbsp; Conoce más</a></div><div class="benefits"><div class="benefit"><strong>⌂<br>Compra</strong><small>Tu nuevo hogar</small></div><div class="benefit"><strong>♢<br>Vende</strong><small>Con confianza</small></div><div class="benefit"><strong>▥<br>Invierte</strong><small>Grandes oportunidades</small></div><div class="benefit"><strong>✓<br>Asesoría</strong><small>Personalizada</small></div></div></div></div>
+<div class="searchbox"><div class="field"><label>📍 Ubicación</label><span>Ciudad o zona</span></div><div class="field"><label>⌂ Tipo de propiedad</label><span>Todos</span></div><div class="field"><label>◇ Precio</label><span>Min - Max</span></div><div class="field"><label>🛏 Habitaciones</label><span>Cualquiera</span></div><button class="search-btn">⌕ &nbsp; Buscar</button></div></section>
+<section class="content properties-section" id="propiedades">
+<div class="container">
+  <div class="section-heading-row">
+    <div><p class="section-kicker">NUESTRAS OPORTUNIDADES</p><h2 class="section-title">Propiedades destacadas</h2><p class="section-sub left">Conoce algunas de las propiedades seleccionadas por SMART HOUSE.</p></div>
+    <div class="carousel-controls" aria-label="Controles de propiedades"><button class="carousel-btn" id="prevProperty" aria-label="Propiedad anterior">‹</button><button class="carousel-btn" id="nextProperty" aria-label="Propiedad siguiente">›</button></div>
+  </div>
+  <div class="filters" role="tablist" aria-label="Filtrar propiedades"><button class="filter active" data-filter="todas">TODAS</button><button class="filter" data-filter="casa">CASAS</button><button class="filter" data-filter="apartamento">APARTAMENTOS</button><button class="filter" data-filter="lote">LOTES</button></div>
+  <div class="property-carousel" id="propertyCarousel">
+    <div class="property-track" id="propertyTrack">
+      <article class="property" data-type="casa">
+        <div class="property-image-wrap"><img src="assets/imagenes/casa1.jpg" alt="Casa de lujo en Buga"><span class="status available">Disponible</span><button class="gallery-arrow left" aria-label="Ver foto anterior">‹</button><button class="gallery-arrow right" aria-label="Ver foto siguiente">›</button><div class="gallery-dots"><i class="active"></i><i></i><i></i></div></div>
+        <div class="property-body"><div class="property-top"><span class="type-label">CASA</span><span class="heart">♡</span></div><h3>Casa de lujo</h3><p>Casa ubicada en Buga, Valle del Cauca</p><p class="price">$ 350.000.000</p><div class="details"><span>🛏 3 habitaciones</span><span>🚿 2 baños</span><span>📐 150 m²</span></div><button class="view-property">Ver propiedad</button></div>
+      </article>
+      <article class="property" data-type="casa">
+        <div class="property-image-wrap"><img src="assets/imagenes/casa2.1.jpg" alt="Casa familiar"><span class="status available">Disponible</span><button class="gallery-arrow left" aria-label="Ver foto anterior">‹</button><button class="gallery-arrow right" aria-label="Ver foto siguiente">›</button><div class="gallery-dots"><i class="active"></i><i></i><i></i></div></div>
+        <div class="property-body"><div class="property-top"><span class="type-label">CASA</span><span class="heart">♡</span></div><h3>Casa familiar</h3><p>Excelente ubicación y amplios espacios</p><p class="price">$ 420.000.000</p><div class="details"><span>🛏 4 habitaciones</span><span>🚿 3 baños</span><span>📐 180 m²</span></div><button class="view-property">Ver propiedad</button></div>
+      </article>
+      <article class="property" data-type="casa">
+        <div class="property-image-wrap"><img src="assets/imagenes/casa3.1.jpg" alt="Casa contemporánea"><span class="status available">Disponible</span><button class="gallery-arrow left" aria-label="Ver foto anterior">‹</button><button class="gallery-arrow right" aria-label="Ver foto siguiente">›</button><div class="gallery-dots"><i class="active"></i><i></i><i></i></div></div>
+        <div class="property-body"><div class="property-top"><span class="type-label">CASA</span><span class="heart">♡</span></div><h3>Casa contemporánea</h3><p>Diseño moderno y excelentes acabados</p><p class="price">$ 390.000.000</p><div class="details"><span>🛏 5 habitaciones</span><span>🚿 2 baños</span><span>📐 200 m²</span></div><button class="view-property">Ver propiedad</button></div>
+      </article>
+      <article class="property" data-type="lote">
+        <div class="property-image-wrap"><img src="assets/imagenes/lote1.jpg" alt="Lote en venta"><span class="status available">Disponible</span><button class="gallery-arrow left" aria-label="Ver foto anterior">‹</button><button class="gallery-arrow right" aria-label="Ver foto siguiente">›</button><div class="gallery-dots"><i class="active"></i><i></i><i></i></div></div>
+        <div class="property-body"><div class="property-top"><span class="type-label">LOTE</span><span class="heart">♡</span></div><h3>Lote para proyecto</h3><p>Excelente oportunidad de inversión</p><p class="price">$ 180.000.000</p><div class="details"><span>📐 420 m²</span><span>📍 Buga</span><span>🛣️ Vía principal</span></div><button class="view-property">Ver propiedad</button></div>
+      </article>
+    </div>
+  </div>
+  <div class="carousel-scroll-hint">Desliza para conocer más propiedades <span>→</span></div>
+</div></section>
+<section class="content" id="nosotros" style="padding-top:3rem"><div class="container"><h2 class="section-title">SMART HOUSE</h2><p class="section-sub">Una inmobiliaria pensada para comprar, vender e invertir de forma sencilla, segura y 100% online.</p></div></section>
+<footer class="footer" id="contacto">
+  <p>© 2026 SMART HOUSE INMOBILIARIA S.A.S. · Todos los derechos reservados</p>
+  <p style="margin-top:1rem"><a href="admin/index.html" style="color:#fff;text-decoration:underline;font-weight:600">🔐 Acceso administrativo</a></p>
+</footer>
+
+
+<div class="property-modal" id="propertyModal" aria-hidden="true">
+  <div class="property-modal-panel" role="dialog" aria-modal="true" aria-labelledby="propertyModalTitle">
+    <button class="property-modal-close" id="propertyModalClose" aria-label="Cerrar ficha">×</button>
+    <div class="property-modal-photo"><img id="propertyModalImage" src="" alt=""><span class="property-modal-status">Disponible</span></div>
+    <div class="property-modal-content">
+      <p class="property-modal-kicker" id="propertyModalType">CASA</p>
+      <h2 id="propertyModalTitle">Propiedad SMART HOUSE</h2>
+      <p class="property-modal-location" id="propertyModalLocation">Buga, Valle del Cauca</p>
+      <p class="property-modal-price" id="propertyModalPrice">$ 0</p>
+      <div class="property-modal-details" id="propertyModalDetails"></div>
+      <h4>Descripción</h4>
+      <p class="property-modal-description" id="propertyModalDescription"></p>
+      <h4>Características</h4>
+      <p class="property-modal-description" id="propertyModalFeatures"></p>
+      <div class="property-modal-actions">
+        <a class="property-modal-primary" href="#contacto" id="propertyModalContact">Solicitar información</a>
+        <a class="property-modal-secondary" href="#propiedades" id="propertyModalBack">Volver a propiedades</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== Solicitud para vender una propiedad ===== -->
+<div class="sell-modal" id="sellModal" aria-hidden="true">
+  <div class="sell-panel" role="dialog" aria-modal="true" aria-labelledby="sellTitle">
+    <div class="sell-head">
+      <div><p class="sell-kicker">SMART HOUSE INMOBILIARIA S.A.S.</p><h2 id="sellTitle">Vende tu propiedad con nosotros</h2><p>Déjanos tus datos. Esta solicitud no publica el inmueble automáticamente.</p></div>
+      <button class="sell-close" id="sellClose" aria-label="Cerrar formulario">×</button>
+    </div>
+    <form id="sellForm">
+      <div class="form-section"><h3>Datos del propietario</h3><div class="form-grid">
+        <label>Nombre completo *<input name="nombre" required type="text" placeholder="Tu nombre completo"></label>
+        <label>Teléfono / WhatsApp *<input name="telefono" required type="tel" placeholder="300 000 0000"></label>
+        <label>Correo electrónico *<input name="correo" required type="email" placeholder="correo@ejemplo.com"></label>
+      </div></div>
+      <div class="form-section"><h3>Información del inmueble</h3><div class="form-grid">
+        <label>Tipo de inmueble *<select name="tipo" required><option value="">Selecciona una opción</option><option>Casa</option><option>Apartamento</option><option>Lote</option><option>Local</option><option>Oficina</option><option>Otro</option></select></label>
+        <label>Ciudad *<input name="ciudad" required type="text" placeholder="Ciudad"></label>
+        <label>Sector / barrio<input name="sector" type="text" placeholder="Sector o barrio"></label>
+        <label>Dirección<input name="direccion" type="text" placeholder="Dirección del inmueble"></label>
+        <label>Precio esperado *<input name="precio" required type="text" placeholder="$ 0"></label>
+        <label>Área (m²)<input name="area" type="number" min="0" placeholder="0"></label>
+        <label>Habitaciones<input name="habitaciones" type="number" min="0" placeholder="0"></label>
+        <label>Baños<input name="banos" type="number" min="0" placeholder="0"></label>
+        <label>Parqueaderos<input name="parqueaderos" type="number" min="0" placeholder="0"></label>
+      </div><label class="full-label">Descripción del inmueble<textarea name="descripcion" rows="4" placeholder="Cuéntanos brevemente sobre la propiedad..."></textarea></label></div>
+      <div class="form-section"><h3>Fotografías</h3><label class="upload-box"><input id="propertyPhotos" name="fotos" type="file" accept="image/*" multiple><span>📷 <strong>Seleccionar fotografías</strong></span><small>Puedes seleccionar varias imágenes. Las fotografías y la solicitud se enviarán de forma segura al sistema de SMART HOUSE para su revisión. La propiedad no se publica automáticamente.</small></label><div id="photoNames" class="photo-names"></div></div>
+      <div class="sell-note">🔐 <strong>Importante:</strong> enviar esta solicitud no significa que la propiedad será publicada. SMART HOUSE revisará la información y se pondrá en contacto contigo para conocer el inmueble y acordar las condiciones de intermediación.</div>
+      <div class="sell-actions"><button type="button" class="btn btn-outline-dark" id="sellCancel">Cancelar</button><button type="submit" class="btn btn-gold">Enviar solicitud</button></div>
+      <p class="form-success" id="formSuccess" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<div class="modal-gallery" id="galleryModal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head"><div><h3 id="modalTitle">Galería de propiedad</h3><p id="modalSubtitle">SMART HOUSE INMOBILIARIA S.A.S.</p></div><button class="modal-close" id="modalClose" aria-label="Cerrar galería">×</button></div>
+    <div class="modal-main"><img id="modalImage" src="" alt="Fotografía de la propiedad"><button class="modal-nav left" id="modalPrev" aria-label="Fotografía anterior">‹</button><button class="modal-nav right" id="modalNext" aria-label="Fotografía siguiente">›</button><span class="modal-counter" id="modalCounter">1 / 1</span><span class="modal-caption" id="modalCaption">SMART HOUSE</span></div>
+    <div class="modal-thumbs" id="modalThumbs" aria-label="Miniaturas de fotografías"></div>
+  </div>
+</div>
+  <script src="js/app.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn=document.getElementById('sellPropertyBtn'), modal=document.getElementById('sellModal'), close=document.getElementById('sellClose'), cancel=document.getElementById('sellCancel'), form=document.getElementById('sellForm'), photos=document.getElementById('propertyPhotos'), names=document.getElementById('photoNames'), success=document.getElementById('formSuccess');
+  if(!modal) return;
+  const open=()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';};
+  const shut=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+  btn?.addEventListener('click',e=>{e.preventDefault();open();}); close?.addEventListener('click',shut); cancel?.addEventListener('click',shut); modal.addEventListener('click',e=>{if(e.target===modal) shut();});
+  photos?.addEventListener('change',()=>{names.innerHTML='';[...photos.files].forEach(f=>{const span=document.createElement('span');span.textContent='📷 '+f.name;names.appendChild(span);});});
+  const toDataURL=f=>new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(f);});
+  form?.addEventListener('submit',async e=>{e.preventDefault();const submit=form.querySelector('button[type=submit]');submit.disabled=true;submit.textContent='ENVIANDO...';try{const data=Object.fromEntries(new FormData(form).entries());data.photos=await Promise.all([...photos.files].slice(0,15).map(toDataURL));const r=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const out=await r.json();if(!r.ok)throw new Error(out.error||'No fue posible enviar la solicitud.');success.textContent='Solicitud recibida correctamente. SMART HOUSE la revisará antes de publicar cualquier información del inmueble.';success.classList.add('show');form.reset();names.innerHTML='';setTimeout(shut,3500);}catch(err){success.textContent=err.message||'No fue posible enviar la solicitud.';success.classList.add('show');}finally{submit.disabled=false;submit.textContent='ENVIAR SOLICITUD';}});
+  document.addEventListener('keydown',e=>{if(modal.classList.contains('open')&&e.key==='Escape')shut();});
+});
+</script>
+</body></html>
