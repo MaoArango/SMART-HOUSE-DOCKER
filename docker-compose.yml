@@ -1,0 +1,37 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smart-house-backend
+    environment:
+      PORT: 3000
+    volumes:
+      - smart_house_data:/app/data
+      - smart_house_uploads:/app/uploads
+    expose:
+      - "3000"
+    networks:
+      - smart-house-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: smart-house-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - smart-house-network
+    restart: unless-stopped
+
+networks:
+  smart-house-network:
+    driver: bridge
+
+volumes:
+  smart_house_data:
+  smart_house_uploads:
