@@ -1,0 +1,30 @@
+﻿name: SMART HOUSE - Docker Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Backend y Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obtener codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Construir imagen Backend
+        run: |
+          docker build -t smart-house-backend:ci -f Dockerfile .
+
+      - name: Construir imagen Frontend
+        run: |
+          docker build -t smart-house-frontend:ci -f nginx/Dockerfile ./nginx
+
+      - name: Confirmar construccion
+        run: |
+          docker images
