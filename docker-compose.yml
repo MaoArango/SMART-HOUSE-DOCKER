@@ -28,6 +28,18 @@ services:
       - smart-house-network
     restart: unless-stopped
 
+  jenkins:
+    image: jenkins/jenkins:lts-jdk21
+    container_name: jenkins-smart-house
+    ports:
+      - "8081:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    networks:
+      - smart-house-network
+    restart: unless-stopped
+
 networks:
   smart-house-network:
     driver: bridge
@@ -35,3 +47,4 @@ networks:
 volumes:
   smart_house_data:
   smart_house_uploads:
+  jenkins_home:
