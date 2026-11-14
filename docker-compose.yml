@@ -29,13 +29,17 @@ services:
     restart: unless-stopped
 
   jenkins:
-    image: jenkins/jenkins:lts-jdk21
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
     container_name: jenkins-smart-house
+    user: "0:0"
     ports:
       - "8081:8080"
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - smart-house-network
     restart: unless-stopped

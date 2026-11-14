@@ -6,35 +6,38 @@ pipeline {
     }
 
     stages {
-        stage('Obtener codigo de GitHub') {
+        stage('Checkout') {
             steps {
                 checkout scm
                 echo 'Codigo fuente obtenido correctamente.'
             }
         }
 
-        stage('Verificar estructura del proyecto') {
+        stage('Build') {
             steps {
                 sh '''
-                    test -f package.json
-                    test -f server.js
-                    test -f Dockerfile
-                    test -f docker-compose.yml
-                    test -f nginx/default.conf
-                    test -f nginx/Dockerfile
+                    docker compose build backend frontend
                 '''
-                echo 'Estructura del proyecto SMART HOUSE verificada.'
+                echo 'Imagenes Docker construidas correctamente.'
             }
         }
 
-        stage('Verificar configuracion Docker') {
+        stage('Test') {
             steps {
                 sh '''
-                    grep -q "smart-house-network" docker-compose.yml
-                    grep -q "smart-house-backend" docker-compose.yml
-                    grep -q "smart-house-frontend" docker-compose.yml
+                    docker compose up -d backend frontend
+
+                    docker compose exec -T frontend \
+                        wget -qO- http://backend:3000/api/health \
+                        > health-response.json
+
+                    grep -q '"ok":true' health-response.json
+                    grep -q '"service":"SMART HOUSE"' health-response.json
+                    grep -q '"database":"SQLite"' health-response.json
+
+                    cat health-response.json
                 '''
-                echo 'Configuracion de los servicios Docker verificada.'
+                echo 'Prueba de comunicacion entre frontend y backend superada.'
             }
         }
     }
