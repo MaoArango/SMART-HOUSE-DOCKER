@@ -27,31 +27,46 @@ pipeline {
                 sh '''
                     set -eu
 
-                    NETWORK="smart-house-test-${BUILD_NUMBER}"
-                    BACKEND="smart-house-backend-test-${BUILD_NUMBER}"
-                    FRONTEND="smart-house-frontend-test-${BUILD_NUMBER}"
+                    PROJECT="smart-house-test-${BUILD_NUMBER}"
+                    COMPOSE_TEST="docker-compose.test.yml"
 
                     cleanup() {
-                        docker rm -f "$FRONTEND" "$BACKEND" >/dev/null 2>&1 || true
-                        docker network rm "$NETWORK" >/dev/null 2>&1 || true
+                        docker compose -p "$PROJECT" \
+                            -f "$COMPOSE_TEST" down --remove-orphans \
+                            >/dev/null 2>&1 || true
                     }
 
                     trap cleanup EXIT
 
-                    docker network create "$NETWORK"
+                    cat > "$COMPOSE_TEST" <<'EOF'
+services:
+  backend:
+    image: smart-house-ci-backend:latest
+    environment:
+      PORT: 3000
+    expose:
+      - "3000"
 
-                    docker run -d \
-                        --name "$BACKEND" \
-                        --network "$NETWORK" \
-                        --network-alias backend \
-                        -e PORT=3000 \
-                        smart-house-ci-backend:latest
+  frontend:
+    image: smart-house-ci-frontend:latest
+    depends_on:
+      - backend
+EOF
 
-                    echo "Esperando que el backend este disponible..."
+                    echo "Iniciando servicios de prueba con Docker Compose..."
+
+                    docker compose -p "$PROJECT" \
+                        -f "$COMPOSE_TEST" up -d --no-build
+
+                    echo "Esperando comunicacion entre servicios..."
 
                     READY=0
+
                     for i in $(seq 1 30); do
-                        if docker exec "$BACKEND" node -e "require('http').get('http://127.0.0.1:3000/api/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))" >/dev/null 2>&1; then
+                        if docker compose -p "$PROJECT" \
+                            -f "$COMPOSE_TEST" exec -T frontend \
+                            wget -qO- http://backend:3000/api/health \
+                            > health-response.json 2>/dev/null; then
                             READY=1
                             break
                         fi
@@ -59,21 +74,11 @@ pipeline {
                     done
 
                     if [ "$READY" -ne 1 ]; then
-                        echo "ERROR: El backend no respondio."
-                        docker logs "$BACKEND"
+                        echo "ERROR: No fue posible consultar el backend."
+                        docker compose -p "$PROJECT" \
+                            -f "$COMPOSE_TEST" logs
                         exit 1
                     fi
-
-                    docker run -d \
-                        --name "$FRONTEND" \
-                        --network "$NETWORK" \
-                        smart-house-ci-frontend:latest
-
-                    echo "Probando comunicacion frontend-backend..."
-
-                    docker exec "$FRONTEND" \
-                        wget -qO- http://backend:3000/api/health \
-                        > health-response.json
 
                     grep -q '"ok":true' health-response.json
                     grep -q '"service":"SMART HOUSE"' health-response.json
@@ -81,7 +86,7 @@ pipeline {
 
                     cat health-response.json
 
-                    echo "Prueba de comunicacion superada."
+                    echo "Prueba de comunicacion con Docker Compose superada."
                 '''
             }
         }
