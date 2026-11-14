@@ -75,3 +75,5 @@ https://github.com/MaoArango/SMART-HOUSE-DOCKER
 ## 9. Propósito
 
 Proyecto desarrollado como actividad académica del módulo Integración Continua del Politécnico Grancolombiano.
+
+Prueba de integración continua con Jenkins - SMART HOUSE.
